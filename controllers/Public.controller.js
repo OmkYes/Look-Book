@@ -7,7 +7,7 @@ exports.getHotels = asyncHandler(async (req, res) => {
     const data = {}
     if (search) {
         // data.city = search
-        data.name = { $regex: `^${search}`, $options: "i" }
+        data.city = { $regex: `^${search}`, $options: "i" }
     }
     const result = await Hotel.find({ isActive: true, ...data }).select("name photo _id city address")
     res.json({ message: "hotel fetch success", result })
